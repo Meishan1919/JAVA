@@ -1,4 +1,5 @@
 package com.isep.hpah.core;
+import java.util.ArrayList;
 import java.util.Scanner;
 import lombok.*;
 
@@ -11,7 +12,10 @@ import static com.isep.hpah.core.Gamelogic.scanner;
 
 public class Wizard {
     public static void main(String[] args) {
+
         Gamelogic.startGame();
+
+
     }
 }
         /*java.util.Scanner input = new java.util.Scanner(System.in);

@@ -1,6 +1,13 @@
 package com.isep.hpah.core;
 
 public class story {
+
+    public static void lession(){
+        System.out.println("Vous avez un cours a suivre");
+        Gamelogic.appuyerenter();
+        System.out.println("Bravo, vous avez appris le spell Wingardium Leviosa");
+        Gamelogic.appuyerenter();
+    }
     public static void PhilosopherStone(){
         System.out.println("你来到了第一关");
         System.out.println("Vous devez affronter le méchant Troll qui se trouve dans les toilettes à côté du Donjon. Pour le\n" +
