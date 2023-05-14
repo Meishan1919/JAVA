@@ -48,11 +48,9 @@ public class Gamelogic {
     }
 
     public static void appuyerenter(){
-        /*System.out.println("Appuyer ENTER pour continuer");
-        scanner.next();*/
         System.out.println();
         Scanner s = new Scanner(System.in);
-        System.out.println("Appuyer ENTER pour continuer");
+        System.out.println("Appuyez sur n'importe quoi pour continuer...");
         s.nextLine();
     }
 

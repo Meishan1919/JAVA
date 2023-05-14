@@ -45,6 +45,13 @@ public class Battle {
                         Gamelogic.printHeading("Vous avez vaincu le " + Enemy.name[Player.xp]);
                         Player.xp++;
                         Gamelogic.appuyerenter();
+                        if(Math.random()*10 + 1 <= 7.5){
+                            Gamelogic.clearConsole();
+                            int randomnumber = random.nextInt(5) + 1;
+                            Gamelogic.printHeading("Félicitations, faites tomber "+ randomnumber +" potion au hasard en tuant le "+ Enemy.name[Player.xp]);
+                            Player.numpotion += randomnumber;
+                            Gamelogic.appuyerenter();
+                        }
                         break;
                     }
                 }else{
