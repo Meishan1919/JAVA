@@ -89,6 +89,9 @@ public class Battle {
                 }
             }else if(input == 3){
                 Spell.spell();
+                if (Enemy.hp[Player.xp] == 0){
+                    break;
+                }
             }else{
                 Gamelogic.clearConsole();
                 if(Math.random()*10 + 1 <= 3.5){

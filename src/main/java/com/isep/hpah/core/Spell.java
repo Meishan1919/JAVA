@@ -49,6 +49,7 @@ public class Spell {
             Gamelogic.clearConsole();
             Gamelogic.printHeading("Vous avez vaincu le " + Enemy.name[Player.xp]);
             Player.xp++;
+            Enemy.hp[Player.xp] = 0;
             Gamelogic.appuyerenter();
             if(Math.random()*10 + 1 <= 7.5){
                 Gamelogic.clearConsole();
