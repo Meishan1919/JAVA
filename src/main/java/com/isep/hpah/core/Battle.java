@@ -88,7 +88,7 @@ public class Battle {
                     Gamelogic.appuyerenter();
                 }
             }else if(input == 3){
-
+                Spell.spell();
             }else{
                 Gamelogic.clearConsole();
                 if(Math.random()*10 + 1 <= 3.5){
