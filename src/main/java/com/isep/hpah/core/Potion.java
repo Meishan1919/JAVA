@@ -31,7 +31,7 @@ public class Potion {
     public static Potion ChoosePotion(player player) {
         Gamelogic.printHeading("我们准备了一个药水作为开学礼物，你可以从以下选项当中选择一个");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1.回血\n" + "2.加强防御\n" + "3.加强攻击力\n" + "4.增加准度");
+        System.out.println("1.回血\n" + "2.加强防御\n" + "3.加强攻击力\n" /*+ "4.增加准度"*/);
         int numbpotion = scanner.nextInt();
         Potion ChoosedPotion = null;
         switch (numbpotion) {
@@ -45,7 +45,6 @@ public class Potion {
         System.out.println("Vous venez d'obtenir la potion " + ChoosedPotion.getName());
         Player.numpotion++;
         Gamelogic.appuyerenter();
-        Player.getPotions().add(ChoosedPotion);
         return ChoosedPotion;
     }
 

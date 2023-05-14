@@ -1,9 +1,7 @@
 package com.isep.hpah.core;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+
 import lombok.*;
 
 
@@ -11,68 +9,112 @@ import static com.isep.hpah.core.Gamelogic.*;
 
 @Getter @Setter
 public class player extends character{
-    public int numpotion, numspell, numatkupgrades,numdefuprades, miss;
+    public int numpotion, numspell;
+    public int attack ;
+    public int defense;
+    public int miss ;
+    public int n;
+    private String potion;
 
     public String[] spell = {"Wingardium Leviosa", "Accio","Expecto\n" +
             "Patronum","expelliarmus"};
-    //public String[] potion;/*= {"soin(回血)","augmenter la defence加强防御","augmenter l'attack增加攻击力","augmenter la precision增加准度"};*/
+    public String[] potion1= {"soin(回血)"};
+    public String[] potion2 ={"augmenter la defence加强防御"};
+    public String[] potion3 ={"augmenter l'attack增加攻击力"};
+    public String[] potion4 = {"augmenter la precision增加准度"};
 
-    List<Potion> potions;
 
-    public List<Potion> listPotion(){
-        return potions;
-    }
-    public player(String name) {
-        super(name, 100, 0);
-        this.numatkupgrades = 0;
-        this.numdefuprades = 0;
-        this.numpotion = 0;
-        this.miss = 60;
-    }
 
-    /*public List<Potion> potions(){
-        List<Potion> potions = new ArrayList<>();
-        return potions;
-    }*/
-    //public
 
-    /*public void usepotion(){
-        List<Potion> potions = this.getPotions();
-    }*/
 
-    //@Override
-    //public int attack() {
-       // return 0;
-    //}
-
-    /*public String getPotion(){
-        return potion;
-    }
-    public void setPotion(){
-
-        this.potion =potion;
-    }*/
-    @Override
-    public int attack() {
-        return 0;
+    public player (String name){
+        super(name, 150, 0 );
+        this.attack = 20;
+        this.defense = 10;
+        this.miss = 7;
+        this.n = 5;
+        this.potion = potion;
+        choosehouse();
+        ChoosePotion();
     }
 
-    @Override
-    public int defend() {
-        return 0;
+    public void setPotion(String potion){
+        this.potion = potion;
     }
 
-    /*public static Potion ListPotion(Wizard wizard) {
-        Potion potion = new potion();
-        potion.setName(choosepotion(wizard));
-        return potion;
+    public String getPotion(){
+        return this.potion;
     }
 
-    private static String ChoosePotion(Wizard wizard) {
-        Gamelogic.printHeading("我们准备了一个药水作为开学礼物，你可以从以下选项当中选择一个");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("1.回血\n"+"2.加强防御\n"+"3.加强攻击力\n"+"4.增加准度");
-        int choosepotion = readInt("->",4);
+
+    public void choosehouse(){
+        Gamelogic.clearConsole();
+        Gamelogic.printHeading("Il y a quatre maisons,Chaque maison a sa spécificité :\n" +
+                "•Les potions sont plus efficaces pour les membres de Hufflepuff.\n" +
+                "•Les sorts font plus de dégâts pour les membres de Slytherin.\n" +
+                "• Les sorciers de Gryffindor sont plus résistants aux dégâts.\n" +
+                "• Les sorciers de Ravenclaw sont plus précis.");
+            // 定义ANSI颜色码
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_YELLOW = "\u001B[33m";
+        final String ANSI_BLUE = "\u001B[34m";
+        int choicehouse =Gamelogic.readInt(ANSI_YELLOW + "1.Hufflepuff\n" + ANSI_RESET +
+                    ANSI_GREEN + "2.Slytherin\n" + ANSI_RESET +
+                    ANSI_RED + "3.Gryffindor\n" + ANSI_RESET +
+                    ANSI_BLUE + "4.Ravenclaw" + ANSI_RESET,4);
+        if (choicehouse == 1) {
+            clearConsole();
+            Gamelogic.printHeading("Vous faites maintenant partie de" + ANSI_YELLOW + " Hufflepuff " + ANSI_RESET);
+
+        } else if (choicehouse == 2) {
+            clearConsole();
+            Gamelogic.printHeading("Vous faites maintenant partie de" + ANSI_GREEN + " Slytherin " + ANSI_RESET);
+            attack +=n;
+        } else if (choicehouse == 3) {
+            clearConsole();
+            Gamelogic.printHeading("Vous faites maintenant partie de" + ANSI_RED + " Gryffindor " + ANSI_RESET);
+            defense += n;
+        } else if (choicehouse == 4) {
+            clearConsole();
+            Gamelogic.printHeading("Vous faites maintenant partie de" + ANSI_BLUE + " Ravenclaw " + ANSI_RESET);
+            miss++;
+        }
+        appuyerenter();
+    }
+
+
+    public void ChoosePotion() {
+        clearConsole();
+        Gamelogic.printHeading("Nous avons préparé une potion comme cadeau scolaire\n" +
+                " Vous pouvez choisir l'une des options suivantes");
+        System.out.println("1." + potion1[0]);
+        System.out.println("2." + potion2[0]);
+        System.out.println("3." + potion3[0]);
+        System.out.println("4." + potion4[0]);
+        int choosepotion = Gamelogic.readInt("->", 4);
+        if (choosepotion == 1) {
+            clearConsole();
+            Gamelogic.printHeading("Vous venez d'obtenir la potion " + potion1[0]);
+            numpotion++;
+        } else if (choosepotion == 2) {
+            clearConsole();
+            Gamelogic.printHeading("Vous venez d'obtenir la potion " + potion2[0]);
+            numpotion++;
+        } else if (choosepotion == 3) {
+            clearConsole();
+            Gamelogic.printHeading("Vous venez d'obtenir la potion " + potion3[0]);
+            numpotion++;
+        } else if (choosepotion == 4) {
+            clearConsole();
+            Gamelogic.printHeading("Vous venez d'obtenir la potion " + potion4[0]);
+            numpotion++;
+        }
+        Gamelogic.appuyerenter();
+    }
+
+        /*int choosepotion = readInt("->",4);
         switch (choosepotion){
             case 1 -> choosepotion = soin;
             case 2 -> choosepotion = attack;
