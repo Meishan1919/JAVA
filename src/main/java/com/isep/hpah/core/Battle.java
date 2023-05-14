@@ -10,14 +10,16 @@ public class Battle {
             Gamelogic.printHeading(Enemy.name[Player.xp] + " \nHp:" + Enemy.hp[Player.xp] + "/" + Enemy.maxHp[Player.xp]);
             System.out.println(Player.name + " \nHp:" + Player.hp + "/" + Player.maxHp);
             Gamelogic.printSeperator(30);
-            System.out.println("choisissez une action:");
+            System.out.println("Choisissez une action:");
             System.out.println("1.Se battre\n2.Utilisez la Potion\n3.Utilisez le spell\n4.S'enfuir");
             int input = Gamelogic.readInt("->", 4);
             if (input == 1) {
                 Random random = new Random();
+                int dmg = Player.attack - Enemy.defense[Player.xp];
+                int dmgTook = Enemy.attack[Player.xp] - Player.defense;
                 if (random.nextInt(10) < Player.miss) {
-                    int dmg = Player.attack - Enemy.defense[Player.xp];
-                    int dmgTook = Enemy.attack[Player.xp] - Player.defense;
+                    //int dmg = Player.attack - Enemy.defense[Player.xp];
+                    //int dmgTook = Enemy.attack[Player.xp] - Player.defense;
                     if (dmgTook < 0) {
                         dmg -= dmgTook / 2;
                         dmgTook = 0;
@@ -48,16 +50,43 @@ public class Battle {
                 }else{
                     Gamelogic.clearConsole();
                     Gamelogic.printHeading("L'attaque a échoué！");
+                    dmg = 0;
+                    Player.hp -= dmgTook;
+                    Gamelogic.appuyerenter();
+                    Gamelogic.clearConsole();
+                    printHeading("BATAILLE");
+                    System.out.println("Vous avez fait " + dmg + " dégâts au " + Enemy.name[Player.xp]);
+                    Gamelogic.printSeperator(15);
+                    System.out.println("Le " + Enemy.name[Player.xp] + " a fait " + dmgTook + " dégâts à vous.");
                     Gamelogic.appuyerenter();
                 }
             }else if(input == 2){
-
+                Gamelogic.clearConsole();
+                if(Player.numpotion > 0 && Player.hp < Player.maxHp){
+                    Gamelogic.printHeading("Vous voulez boire une potion?(" + Player.numpotion + " resté).");
+                    System.out.println("1.Oui\n2.Non,peut-être plus tard");
+                    input = readInt("->",2);
+                    if(input == 1){
+                        Player.hp += Player.n;
+                        Player.numpotion--;
+                        if(Player.hp >= Player.maxHp){
+                            Player.hp = Player.maxHp;
+                        }
+                        Gamelogic.clearConsole();
+                        Gamelogic.printHeading("Vous avez bu une potion de soin,la santé est restaurée "+ Player.n);
+                        Gamelogic.appuyerenter();
+                    }
+                }else{
+                    Gamelogic.printHeading("Vous n'avez pas de potions ou votre santé est pleine");
+                    Gamelogic.appuyerenter();
+                }
             }else if(input == 3){
 
             }else{
                 Gamelogic.clearConsole();
                 if(Math.random()*10 + 1 <= 3.5){
-                    printHeading("You ran away from the " + Enemy.name[Player.xp]);
+                    printHeading("Vous avez fui le " + Enemy.name[Player.xp]);
+                    Enemy.hp[Player.xp] = Enemy.maxHp[Player.xp];
                     Gamelogic.appuyerenter();
                     break;
                 }else{
@@ -78,5 +107,4 @@ public class Battle {
 
 
         }
-        //player potion = new player();
     }

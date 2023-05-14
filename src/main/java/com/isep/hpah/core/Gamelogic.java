@@ -7,8 +7,6 @@ public class Gamelogic {
     static Scanner scanner = new Scanner(System.in);
     static player Player;
 
-    static Potion potion;
-
     public static boolean isRunning;
 
     public static int place = 0, act;
@@ -63,7 +61,7 @@ public class Gamelogic {
         printSeperator(40);
         printSeperator(30);
         System.out.println("HARRY POTTER");
-        System.out.println("RPG BY CMS");
+        System.out.println("RPG BY CHEN Meishan");
         printSeperator(30);
         printSeperator(40);
         appuyerenter();
@@ -85,7 +83,7 @@ public class Gamelogic {
     public static void printMenu(){
             clearConsole();
             printHeading(places[place]);
-            System.out.println("choisissez une action:");
+            System.out.println("Choisissez une action:");
             System.out.println("(1) Continuez votre voyage");
             System.out.println("(2) CHARACTER INFO");
             System.out.println("(3) Quitter le jeu");
@@ -100,12 +98,12 @@ public class Gamelogic {
         printSeperator(20);
         System.out.println("Attack:" +Player.attack + "\tDéfense:" +Player.defense);
         printSeperator(20);
-        System.out.println("Nombre de potions:" +Player.numpotion + "\tNiveau:" +Player.xp);
+        System.out.println("Nombre de potions:" +Player.numpotion);
         printSeperator(20);
-        if(Player.numpotion > 0){
+        /*if(Player.numpotion > 0){
             System.out.println("药水名字:" +Player.numpotion);
-        }
-        //System.out.println("Niveau:" +Player.xp);
+        }*/
+        System.out.println("Niveau:" +Player.xp);
         printSeperator(20);
         System.out.println("spell:" + Player.spell[Player.numspell]);
         printSeperator(20);

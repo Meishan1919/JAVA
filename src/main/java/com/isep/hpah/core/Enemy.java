@@ -2,6 +2,7 @@ package com.isep.hpah.core;
 
 public class Enemy extends character{
 
+
     int PlayerXp;
 
     public static String[] name = {"Troll","Basilic","Détraqueurs","Voldemort\n" +
