@@ -103,8 +103,6 @@ public class Gamelogic {
         }*/
         System.out.println("Niveau:" +Player.xp);
         printSeperator(20);
-        System.out.println("spell:" + Player.spell[Player.numspell]);
-        printSeperator(20);
         appuyerenter();
     }
 

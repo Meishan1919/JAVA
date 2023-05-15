@@ -48,7 +48,6 @@ public class Spell {
         if (random.nextInt(10) < 5) {
             Gamelogic.clearConsole();
             Gamelogic.printHeading("Vous avez vaincu le " + Enemy.name[Player.xp]);
-            Player.xp++;
             Enemy.hp[Player.xp] = 0;
             Gamelogic.appuyerenter();
             if(Math.random()*10 + 1 <= 7.5){
@@ -56,6 +55,7 @@ public class Spell {
                 int randomnumber = random.nextInt(5) + 1;
                 Gamelogic.printHeading("Félicitations, faites tomber "+ randomnumber +" potion au hasard en tuant le "+ Enemy.name[Player.xp]);
                 Player.numpotion += randomnumber;
+                Player.xp++;
                 Gamelogic.appuyerenter();
             }
         } else {
